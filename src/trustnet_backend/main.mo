@@ -1,4 +1,155 @@
+import Text "mo:base/Text";
+import Bool "mo:base/Bool";
+import List "mo:base/List";
+import Float "mo:base/Float";
+import Int64 "mo:base/Int64";
+import Nat "mo:base/Nat";
+import HashMap "mo:base/HashMap";
+import Int "mo:base/Int";
+import Iter "mo:base/Iter";
+import Array "mo:base/Array";
+import Order "mo:base/Order";
+import Principal "mo:base/Principal";
+import Time "mo:base/Time";
+import CommunityModule "modules/CommunityModule";
+import MembersModule "modules/MembersModule";
+import UsersModule "modules/UsersModule";
+import Result "mo:base/Result";
+
 actor {
+
+  stable var userID = 0;
+  stable var userEntries : [(Principal, UsersModule.User)] = [];
+  let users = HashMap.HashMap<Principal, UsersModule.User>(0, Principal.equal, Principal.hash);
+
+  stable var communityID = 0;
+  stable var communityEntries : [(Int, CommunityModule.Community)] = [];
+  //stable var communities = List.nil<CommunityModule.Community>();
+  let communities = HashMap.fromIter<Int, CommunityModule.Community>(
+    communityEntries.vals(),
+    Iter.size(communityEntries.vals()),
+    Int.equal,
+    Int.hash,
+  );
+
+  public shared ({ caller }) func addUser(argEmailAddress : Text, argName : Text) : async Result.Result<(), Text> {
+    // if(Principal.isAnonymous(caller)){      return "Usuario Anonimo"    }; MIENTRAS
+    switch (users.get(caller)) {
+      case (null) {
+        let newUser : UsersModule.User = {
+          id = caller;
+          name = argName;
+          emailAddress = argEmailAddress;
+          isActive = true;
+          communities = List.nil(); // Guardar el ID de la comunidad
+          offeredServices = List.nil();
+          createdAt = Time.now();
+        };
+        users.put(caller, newUser);
+        return #ok();
+      };
+      case (?_) {
+        return #err("Member already exist");
+      };
+    };
+
+  };
+
+  public query func getAllUsers() : async [UsersModule.User] {
+    return Iter.toArray(users.vals());
+  };
+
+  public shared ({ caller }) func createCommunity(
+    argName : Text,
+    argMembers : List.List<MembersModule.Member>,
+    argIsActive : Bool,
+    argGathersResources : Bool,
+    argAvailableFunds : Float,
+    argIsLongTerm : Bool,
+    argConditionedVote : Bool,
+    argVoteTransferAllowed : Bool,
+    argMinimunVotingWindow : Int64,
+  ) : async Text {
+
+    communityID += 1;
+
+    let community : CommunityModule.Community = {
+      id = communityID;
+      name = argName;
+      creator = caller;
+      members = argMembers;
+      isActive = argIsActive;
+      gathersResources = argGathersResources;
+      availableFunds = argAvailableFunds;
+      isLongTerm = argIsLongTerm;
+      allowConditionedVote = argConditionedVote;
+      voteTransferAllowed = argVoteTransferAllowed;
+      minimumVotingWindow = argMinimunVotingWindow;
+    };
+    //communities := List.push(community, communities);
+    communities.put(communityID, community);
+    "Created community " #community.name # " with ID: " # Int.toText(community.id);
+  };
+
+  //Retorna todas las comunidades dentro del canister
+  public query func getCommunities() : async [(Int, CommunityModule.Community)] {
+    let entries : [(Int, CommunityModule.Community)] = Iter.toArray(communities.entries());
+
+    let sortedEntries = Array.sort<(Int, CommunityModule.Community)>(
+      entries,
+      func(
+        a : (Int, CommunityModule.Community),
+        b : (Int, CommunityModule.Community),
+      ) : Order.Order {
+        Int.compare(a.1.id, b.1.id);
+      },
+    );
+
+    return sortedEntries;
+  };
+
+  //Recibe el Id de la comunidad y retorna las configuraciones (todas las props, menos miembros)
+  public query func getCommunitySettings(id : Int) : async ?CommunityModule.Community {
+    communities.get(id);
+  };
+
+  //Recibe el Id de la comunidad y retorna los miembros
+  public query func getCommunityMembers(id : Int) : async ?CommunityModule.Community {
+    communities.get(id);
+  };
+
+  //Recibe comunidad y actualiza las props (update HTTP)
+  public func updateCommunity(community : CommunityModule.Community) : async Text {
+    "Se actualizaron las props";
+  };
+
+  public shared ({ caller }) func deleteCommunity(communityID : Int) : async Result.Result<(), Text> {
+    switch (communities.get(communityID)) {
+      case (null) {
+        return #err("Community doesnt exist");
+      };
+      case (?community) {
+        let creatorPrincipal = community.creator;
+        if (Principal.equal(caller, creatorPrincipal)) {
+          communities.delete(communityID);
+          return #ok();
+        } else {
+          return #err("You arent the creator.");
+        };
+      };
+    };
+  };
+
+  system func preupgrade() {
+    communityEntries := Iter.toArray<(Int, CommunityModule.Community)>(communities.entries());
+    userEntries := Iter.toArray<(Principal, UsersModule.User)>(users.entries());
+  };
+
+  system func postupgrade() {
+    communityEntries := [];
+    userEntries := [];
+  };
+
   public query func greet(name : Text) : async Text {
     return "Hello, " # name # "!";
   };
