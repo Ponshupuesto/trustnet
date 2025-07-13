@@ -11,6 +11,16 @@
       "type": "custom",
       "wasm": "https://github.com/dfinity/internet-identity/releases/latest/download/internet_identity_dev.wasm.gz"
     },
+    "icp_ledger_canister": {
+      "type": "custom",
+      "candid": "https://raw.githubusercontent.com/dfinity/ic/e915efecc8af90993ccfc499721ebe826aadba60/rs/ledger_suite/icp/ledger.did",
+      "wasm": "https://download.dfinity.systems/ic/e915efecc8af90993ccfc499721ebe826aadba60/canisters/ledger-canister.wasm.gz",
+      "remote": {
+        "id": {
+          "ic": "ryjl3-tyaaa-aaaaa-aaaba-cai"
+        }
+      }
+    },
     "trustnet_backend": {
       "main": "src/trustnet_backend/main.mo",
       "type": "motoko"
@@ -36,7 +46,7 @@
     },
     "build": {
       "args": "",
-      "packtool": ""
+      "packtool": "mops sources"
     }
   },
   "output_env_file": ".env",

@@ -15,8 +15,12 @@ import CommunityModule "modules/CommunityModule";
 import MembersModule "modules/MembersModule";
 import UsersModule "modules/UsersModule";
 import Result "mo:base/Result";
+import Blob "mo:base/Blob";
+import Hex "modules/Hex";
 
-actor {
+
+
+actor Manager{
 
   stable var userID = 0;
   stable var userEntries : [(Principal, UsersModule.User)] = [];
@@ -153,4 +157,10 @@ actor {
   public query func greet(name : Text) : async Text {
     return "Hello, " # name # "!";
   };
+
+  public shared query func getAccount() : async Text {
+  let acctId = Principal.toLedgerAccount(Principal.fromActor(Manager), ?Blob.fromArray(Array.freeze(Array.init<Nat8>(32, 0))));
+  "Your Account is " # Hex.encode(Blob.toArray(acctId)) # "!"
+};
+
 };
