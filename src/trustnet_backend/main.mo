@@ -158,7 +158,7 @@ actor Manager{
     return "Hello, " # name # "!";
   };
 
-  public shared query func getAccount() : async Text {
+  public query func getAccount() : async Text {
   let acctId = Principal.toLedgerAccount(Principal.fromActor(Manager), ?Blob.fromArray(Array.freeze(Array.init<Nat8>(32, 0))));
   "Your Account is " # Hex.encode(Blob.toArray(acctId)) # "!"
 };
