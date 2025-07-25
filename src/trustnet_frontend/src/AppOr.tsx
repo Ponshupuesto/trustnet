@@ -1,4 +1,4 @@
-import { useState } from 'react';
+/* import { useState } from 'react';
 import { useInternetIdentity } from "ic-use-internet-identity";
 import { useActor } from './components/ic/Actors';
 import { LoginButton } from './components/LoginButton';
@@ -68,3 +68,4 @@ function App() {
 }
 
 export default App;
+ */

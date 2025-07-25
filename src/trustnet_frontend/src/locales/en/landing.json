@@ -1,0 +1,69 @@
+{
+  "hero": {
+    "title": "Build the network",
+    "subtitle": "you need",
+    "description": "The platform to create and manage networks of any type, in a simple, secure and completely transparent way.",
+    "cta": {
+      "primary": "Create my Network",
+      "secondary": "View Demo"
+    }
+  },
+  "features": {
+    "title": "Everything you can do",
+    "items": {
+      "createNetwork": "Create your own network with your rules",
+      "proposals": "Generate proposals and vote",
+      "funds": "Manage funds transparently",
+      "calendar": "Share calendars and activities",
+      "connect": "Connect with other networks",
+      "transparent": "Everything transparent and auditable"
+    }
+  },
+  "benefits": {
+    "title": "Powered by Internet Computer",
+    "secure": {
+      "title": "Secure and Decentralized",
+      "desc": "Your data protected on blockchain"
+    },
+    "transparent": {
+      "title": "Total Transparency",
+      "desc": "All decisions are public and auditable"
+    },
+    "governance": {
+      "title": "Community Governance",
+      "desc": "Decisions are made by the community"
+    },
+    "scale": {
+      "title": "Global Scale",
+      "desc": "From local to international"
+    }
+  },
+  "useCases": {
+    "title": "For all types of networks",
+    "local": {
+      "title": "Local Communities",
+      "desc": "Organize your building, street or neighborhood"
+    },
+    "student": {
+      "title": "Student Organizations",
+      "desc": "University committees and groups"
+    },
+    "professional": {
+      "title": "Professional Networks",
+      "desc": "Connect with colleagues and projects"
+    },
+    "dao": {
+      "title": "DAOs and Collectives",
+      "desc": "Decentralized organizations"
+    }
+  },
+  "cta": {
+    "title": "Sign in, create your network and",
+    "highlight": "make things happen",
+    "subtitle": "Trustnet: networks that trust, networks that build.",
+    "button": "Start Now"
+  },
+  "footer": {
+    "copyright": "© 2025 Trustnet. Built on Internet Computer Protocol."
+  }
+}

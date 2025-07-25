@@ -3,3 +3,7 @@
 .browser-warning {
   display: none;
 }
+
+html {
+  scroll-behavior: smooth;
+}

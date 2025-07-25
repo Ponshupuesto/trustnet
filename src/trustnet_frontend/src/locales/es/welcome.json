@@ -1,0 +1,28 @@
+{
+  "title": "¡Bienvenido a Trustnet!",
+  "subtitle": "Tu identidad en Internet Computer está lista. Ahora configuremos tu perfil para que puedas empezar a construir y conectar.",
+  "identity": {
+    "label": "Tu identidad verificada",
+    "verified": "Verificada"
+  },
+  "features": {
+    "title": "¿Qué puedes hacer en Trustnet?",
+    "create": {
+      "title": "Crea tu primera red",
+      "description": "Organiza tu comunidad, proyecto o causa"
+    },
+    "connect": {
+      "title": "Conecta con otros",
+      "description": "Encuentra personas con intereses similares"
+    },
+    "transparent": {
+      "title": "Todo transparente",
+      "description": "Decisiones públicas y auditables en blockchain"
+    }
+  },
+  "cta": {
+    "subtitle": "Empecemos creando tu perfil. Solo tomará un minuto.",
+    "button": "Crear mi Perfil",
+    "note": "Podrás editar tu información en cualquier momento"
+  }
+}

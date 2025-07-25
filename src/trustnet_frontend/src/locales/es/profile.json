@@ -1,0 +1,85 @@
+{
+  "title": "Mi Perfil",
+  "user": {
+    "title": "Usuario de Trustnet",
+    "principal": "Principal"
+  },
+  "status": {
+    "verified": {
+      "title": "Identidad Verificada",
+      "desc": "Autenticado con Internet Identity"
+    },
+    "networks": {
+      "title": "{{count}} Redes",
+      "desc": "Aún no perteneces a ninguna red"
+    },
+    "notifications": {
+      "title": "Notificaciones",
+      "desc": "No tienes notificaciones nuevas"
+    }
+  },
+  "edit": {
+    "title": "Editar Perfil",
+    "subtitle": "Personaliza tu información y cómo otros te ven en la red",
+    "principal": "Principal ID",
+    "principalDesc": "Tu identidad única en Internet Computer",
+    "photo": {
+      "title": "Foto de Perfil",
+      "upload": "Subir Foto",
+      "change": "Cambiar Foto",
+      "remove": "Eliminar",
+      "recommended": "Recomendado: Imagen cuadrada, mínimo 200x200px"
+    },
+    "personal": {
+      "title": "Información Personal",
+      "displayName": "Nombre para mostrar",
+      "displayNamePlaceholder": "¿Cómo quieres que te llamen?",
+      "bio": "Biografía",
+      "bioPlaceholder": "Cuéntanos un poco sobre ti...",
+      "location": "Ubicación",
+      "locationPlaceholder": "Ciudad, País"
+    },
+    "contact": {
+      "title": "Información de Contacto",
+      "email": "Correo Electrónico",
+      "emailPlaceholder": "tu@email.com",
+      "phone": "Teléfono",
+      "phonePlaceholder": "+52 55 1234 5678",
+      "website": "Sitio Web",
+      "websitePlaceholder": "https://tu-sitio.com"
+    },
+    "social": {
+      "title": "Redes Sociales",
+      "twitter": "Twitter",
+      "twitterPlaceholder": "@usuario",
+      "linkedin": "LinkedIn",
+      "linkedinPlaceholder": "linkedin.com/in/usuario",
+      "github": "GitHub",
+      "githubPlaceholder": "github.com/usuario"
+    },
+    "privacy": {
+      "title": "Privacidad",
+      "showEmail": "Mostrar email públicamente",
+      "showPhone": "Mostrar teléfono públicamente",
+      "showLocation": "Mostrar ubicación en el perfil",
+      "showWebsite": "Mostrar sitio web públicamente",
+      "showTwitter": "Mostrar perfil de Twitter",
+      "showLinkedin": "Mostrar perfil de LinkedIn",
+      "showGithub": "Mostrar perfil de GitHub",
+      "allowMessages": "Permitir mensajes de otros usuarios"
+    },
+    "actions": {
+      "save": "Guardar Cambios",
+      "cancel": "Cancelar",
+      "saving": "Guardando...",
+      "saved": "¡Cambios guardados!"
+    }
+  },
+  "view": {
+    "memberSince": "Miembro desde",
+    "networks": "Redes",
+    "noNetworks": "Sin redes aún",
+    "contact": "Contacto",
+    "social": "Redes Sociales"
+  }
+}

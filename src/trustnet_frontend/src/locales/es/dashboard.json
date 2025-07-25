@@ -1,0 +1,16 @@
+{
+  "title": "Panel de Control",
+  "welcome": "Bienvenido a Trustnet",
+  "stats": {
+    "activeNetworks": "Redes Activas",
+    "members": "Miembros",
+    "proposals": "Propuestas",
+    "activity": "Actividad"
+  },
+  "quickActions": {
+    "title": "Acciones Rápidas",
+    "createNetwork": "Crear Nueva Red",
+    "joinNetwork": "Unirse a una Red",
+    "viewInvitations": "Ver Invitaciones"
+  }
+}

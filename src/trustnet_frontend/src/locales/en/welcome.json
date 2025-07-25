@@ -1,0 +1,28 @@
+{
+  "title": "Welcome to Trustnet!",
+  "subtitle": "Your Internet Computer identity is ready. Now let's set up your profile so you can start building and connecting.",
+  "identity": {
+    "label": "Your verified identity",
+    "verified": "Verified"
+  },
+  "features": {
+    "title": "What can you do on Trustnet?",
+    "create": {
+      "title": "Create your first network",
+      "description": "Organize your community, project or cause"
+    },
+    "connect": {
+      "title": "Connect with others",
+      "description": "Find people with similar interests"
+    },
+    "transparent": {
+      "title": "Everything transparent",
+      "description": "Public and auditable decisions on blockchain"
+    }
+  },
+  "cta": {
+    "subtitle": "Let's start by creating your profile. It will only take a minute.",
+    "button": "Create my Profile",
+    "note": "You can edit your information at any time"
+  }
+}
