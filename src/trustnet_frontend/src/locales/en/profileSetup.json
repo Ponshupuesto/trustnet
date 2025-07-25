@@ -1,0 +1,58 @@
+{
+  "title": "Set up your profile",
+  "subtitle": "Customize how others will see you on Trustnet",
+  "progress": {
+    "step": "Step {{current}} of {{total}}",
+    "percentage": "{{percent}}%"
+  },
+  "steps": {
+    "basic": {
+      "title": "Basic information",
+      "subtitle": "Let's start with the essentials",
+      "required": "Required"
+    },
+    "contact": {
+      "title": "Contact",
+      "subtitle": "Optional - Decide what information to share",
+      "tip": "Tip: You can control what information is visible using the eye icons"
+    },
+    "social": {
+      "title": "Social networks",
+      "subtitle": "Connect your social profiles (optional)"
+    },
+    "privacy": {
+      "title": "Privacy",
+      "subtitle": "Control how others interact with you",
+      "almostDone": {
+        "title": "Almost done!",
+        "description": "Your profile is almost complete. Remember that you can edit any information at any time from the profile page."
+      }
+    }
+  },
+  "preview": {
+    "label": "Preview",
+    "description": "This is how your profile will look"
+  },
+  "tips": {
+    "title": "💡 Quick tips",
+    "items": {
+      "name": "Use your real name or a pseudonym you're comfortable with",
+      "photo": "A profile picture helps build trust in the community",
+      "edit": "You can edit this information at any time",
+      "principal": "Your Principal ID will always be your unique identifier"
+    }
+  },
+  "validation": {
+    "nameRequired": "Name is required"
+  },
+  "actions": {
+    "back": "Back",
+    "cancel": "Cancel",
+    "previous": "Previous",
+    "next": "Next",
+    "skip": "Complete with basic information",
+    "complete": "Complete Profile",
+    "saving": "Saving...",
+    "skipNow": "Skip for now"
+  }
+}

@@ -1,0 +1,70 @@
+{
+  "hero": {
+    "title": "Crea la red",
+    "subtitle": "que necesitas",
+    "description": "La plataforma para crear y gestionar redes de cualquier tipo, de forma sencilla, segura y completamente transparente.",
+    "cta": {
+      "primary": "Crear mi Red",
+      "secondary": "Ver Demo"
+    }
+  },
+  "features": {
+    "title": "Todo lo que puedes hacer",
+    "items": {
+      "createNetwork": "Crea tu propia red con tus reglas",
+      "proposals": "Genera propuestas y vota",
+      "funds": "Administra fondos transparentemente",
+      "calendar": "Comparte calendarios y actividades",
+      "connect": "Conecta con otras redes",
+      "transparent": "Todo transparente y auditable"
+    }
+  },
+  "benefits": {
+    "title": "Respaldado por Internet Computer",
+    "secure": {
+      "title": "Seguro y Descentralizado",
+      "desc": "Tus datos protegidos en blockchain"
+    },
+    "transparent": {
+      "title": "Transparencia Total",
+      "desc": "Todas las decisiones son públicas y auditables"
+    },
+    "governance": {
+      "title": "Gobernanza Comunitaria",
+      "desc": "Las decisiones las toma la comunidad"
+    },
+    "scale": {
+      "title": "Escala Global",
+      "desc": "Desde lo local hasta lo internacional"
+    }
+  },
+  "useCases": {
+    "title": "Para todo tipo de redes",
+    "local": {
+      "title": "Comunidades Locales",
+      "desc": "Organiza tu edificio, calle o barrio"
+    },
+    "student": {
+      "title": "Organizaciones Estudiantiles",
+      "desc": "Comités y grupos universitarios"
+    },
+    "professional": {
+      "title": "Redes Profesionales",
+      "desc": "Conecta con colegas y proyectos"
+    },
+    "dao": {
+      "title": "DAOs y Colectivos",
+      "desc": "Organizaciones descentralizadas"
+    }
+  },
+  "cta": {
+    "title": "Inicia sesión, crea tu red y",
+    "highlight": "haz que las cosas pasen",
+    "subtitle": "Trustnet: redes que confían, redes que construyen.",
+    "button": "Comenzar Ahora"
+  },
+  "footer": {
+    "copyright": "© 2025 Trustnet. Construido en Internet Computer Protocol."
+  }
+}
+

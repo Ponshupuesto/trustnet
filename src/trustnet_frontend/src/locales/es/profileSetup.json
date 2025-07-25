@@ -1,0 +1,58 @@
+{
+  "title": "Configura tu perfil",
+  "subtitle": "Personaliza cómo otros te verán en Trustnet",
+  "progress": {
+    "step": "Paso {{current}} de {{total}}",
+    "percentage": "{{percent}}%"
+  },
+  "steps": {
+    "basic": {
+      "title": "Información básica",
+      "subtitle": "Comencemos con lo esencial",
+      "required": "Requerido"
+    },
+    "contact": {
+      "title": "Contacto",
+      "subtitle": "Opcional - Decide qué información compartir",
+      "tip": "Tip: Puedes controlar qué información es visible usando los iconos de ojo"
+    },
+    "social": {
+      "title": "Redes sociales",
+      "subtitle": "Conecta tus perfiles sociales (opcional)"
+    },
+    "privacy": {
+      "title": "Privacidad",
+      "subtitle": "Controla cómo otros interactúan contigo",
+      "almostDone": {
+        "title": "¡Casi listo!",
+        "description": "Tu perfil está casi completo. Recuerda que puedes editar cualquier información en cualquier momento desde la página de perfil."
+      }
+    }
+  },
+  "preview": {
+    "label": "Vista previa",
+    "description": "Así se verá tu perfil"
+  },
+  "tips": {
+    "title": "💡 Consejos rápidos",
+    "items": {
+      "name": "Usa tu nombre real o un pseudónimo con el que te sientas cómodo",
+      "photo": "Una foto de perfil ayuda a construir confianza en la comunidad",
+      "edit": "Puedes editar esta información en cualquier momento",
+      "principal": "Tu Principal ID siempre será tu identificador único"
+    }
+  },
+  "validation": {
+    "nameRequired": "El nombre es requerido"
+  },
+  "actions": {
+    "back": "Volver",
+    "cancel": "Cancelar",
+    "previous": "Anterior",
+    "next": "Siguiente",
+    "skip": "Completar con información básica",
+    "complete": "Completar Perfil",
+    "saving": "Guardando...",
+    "skipNow": "Omitir por ahora"
+  }
+}

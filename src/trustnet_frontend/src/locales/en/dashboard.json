@@ -1,0 +1,16 @@
+{
+  "title": "Dashboard",
+  "welcome": "Welcome to Trustnet",
+  "stats": {
+    "activeNetworks": "Active Networks",
+    "members": "Members",
+    "proposals": "Proposals",
+    "activity": "Activity"
+  },
+  "quickActions": {
+    "title": "Quick Actions",
+    "createNetwork": "Create New Network",
+    "joinNetwork": "Join a Network",
+    "viewInvitations": "View Invitations"
+  }
+}

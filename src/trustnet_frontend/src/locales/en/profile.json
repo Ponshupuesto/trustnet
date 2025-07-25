@@ -1,0 +1,85 @@
+{
+  "title": "My Profile",
+  "user": {
+    "title": "Trustnet User",
+    "principal": "Principal"
+  },
+  "status": {
+    "verified": {
+      "title": "Verified Identity",
+      "desc": "Authenticated with Internet Identity"
+    },
+    "networks": {
+      "title": "{{count}} Networks",
+      "desc": "You don't belong to any network yet"
+    },
+    "notifications": {
+      "title": "Notifications",
+      "desc": "You have no new notifications"
+    }
+  },
+   "edit": {
+    "title": "Edit Profile",
+    "subtitle": "Customize your information and how others see you on the network",
+    "principal": "Principal ID",
+    "principalDesc": "Your unique identity on Internet Computer",
+    "photo": {
+      "title": "Profile Picture",
+      "upload": "Upload Photo",
+      "change": "Change Photo",
+      "remove": "Remove",
+      "recommended": "Recommended: Square image, minimum 200x200px"
+    },
+    "personal": {
+      "title": "Personal Information",
+      "displayName": "Display Name",
+      "displayNamePlaceholder": "What should we call you?",
+      "bio": "Bio",
+      "bioPlaceholder": "Tell us a bit about yourself...",
+      "location": "Location",
+      "locationPlaceholder": "City, Country"
+    },
+    "contact": {
+      "title": "Contact Information",
+      "email": "Email",
+      "emailPlaceholder": "you@email.com",
+      "phone": "Phone",
+      "phonePlaceholder": "+1 555 123 4567",
+      "website": "Website",
+      "websitePlaceholder": "https://your-site.com"
+    },
+    "social": {
+      "title": "Social Networks",
+      "twitter": "Twitter",
+      "twitterPlaceholder": "@username",
+      "linkedin": "LinkedIn",
+      "linkedinPlaceholder": "linkedin.com/in/username",
+      "github": "GitHub",
+      "githubPlaceholder": "github.com/username"
+    },
+"privacy": {
+      "title": "Privacy",
+      "showEmail": "Show email publicly",
+      "showPhone": "Show phone publicly",
+      "showLocation": "Show location on profile",
+      "showWebsite": "Show website publicly",
+      "showTwitter": "Show Twitter profile",
+      "showLinkedin": "Show LinkedIn profile",
+      "showGithub": "Show GitHub profile",
+      "allowMessages": "Allow messages from other users"
+    },
+    "actions": {
+      "save": "Save Changes",
+      "cancel": "Cancel",
+      "saving": "Saving...",
+      "saved": "Changes saved!"
+    }
+  },
+  "view": {
+    "memberSince": "Member since",
+    "networks": "Networks",
+    "noNetworks": "No networks yet",
+    "contact": "Contact",
+    "social": "Social Networks"
+  }
+}

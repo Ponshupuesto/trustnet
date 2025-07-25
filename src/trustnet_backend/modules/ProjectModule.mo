@@ -20,13 +20,13 @@ module ProjectModule {
         targetAmmount: Float; //Fondos disponibles (bolsa general), sólo disponible si gatherResources es true, de lo contrario siempre 0.0
     };
 
-    public type ProjectType {
+    public type ProjectType = {
         #SingleVoting; 
         #SharedMilestone;
         #MilestoneAchievement;
     };
 
-    public type Phase {
+    public type Phase = {
         #Posted; 
         #VotingPeriod;
         #Approved;
