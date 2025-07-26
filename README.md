@@ -1,35 +1,106 @@
-# `trustnet`
 
-Welcome to your new `change` project and to the Internet Computer development community. By default, creating a new project adds this README and some template files to your project directory. You can edit these template files to customize your project and to include your own code to speed up the development cycle.
+🧩 1. What is Trustnet?
+Trustnet is a platform for creating and managing organized, participatory, and secure networks — designed for individuals, communities, and organizations that want to collaborate, make decisions, and build together in a transparent and decentralized way.
 
-To get started, you might want to explore the project directory structure and the default configuration file. Working with this project in your development environment will not affect any production deployment or identity tokens.
+👥 2. Who is it for?
+Trustnet is designed for a wide range of users and communities, including:
 
-To learn more before you start working with `trustnet`, see the following documentation available online:
+Neighborhood or citizen organizations
 
-- [Quick Start](https://internetcomputer.org/docs/current/developer-docs/setup/deploy-locally)
-- [SDK Developer Tools](https://internetcomputer.org/docs/current/developer-docs/setup/install)
-- [Motoko Programming Language Guide](https://internetcomputer.org/docs/current/motoko/main/motoko)
-- [Motoko Language Quick Reference](https://internetcomputer.org/docs/current/motoko/main/language-manual)
+Cultural or social collectives
 
-If you want to start working on your project right away, you might want to try the following commands:
+Fandoms and global fan communities
 
-```bash
-cd trustnet/
-dfx help
-dfx canister --help
-```
+Content creators and influencers
 
-## Running the project locally
+Student or academic groups
+
+Civil associations, cooperatives, and NGOs
+
+Work teams, DAOs, and Web3 networks
+
+🧰 3. What can you do with Trustnet?
+Each network created on Trustnet can:
+
+Create proposals and put them to a vote
+
+Assign roles and responsibilities
+
+Share calendars, agreements, and progress
+
+Report local issues (such as service failures) and track their resolution
+
+Organize contests, raffles, campaigns, or events
+
+Connect with other networks to collaborate
+
+Manage funds with full transparency
+
+Communicate directly without intermediaries
+
+🌐 4. Secure and decentralized technology
+Trustnet is built on the Internet Computer Protocol (ICP), which ensures:
+
+Security and sovereignty over your data
+
+Full transparency: everything is auditable by participants
+
+Autonomy: each network defines how it governs itself
+
+Scalability without relying on centralized servers
+
+🧭 5. Bridging people to the Web3 world
+One of Trustnet’s core goals is to facilitate the gradual adoption of Web3 technologies.
+Thanks to its flexible governance models (consultative, participatory, DAO), users can start with simple structures and evolve at their own pace toward more decentralized systems.
+
+🌍 6. Small networks, collective impact
+We believe true change begins locally:
+small, organized networks equipped with real tools that can connect and scale together.
+
+Whether it’s a neighborhood community, an artistic collective, a fan group, or a creator’s audience — Trustnet enables people to join forces and create greater impact.
+
+💡 7. More than a platform: an ecosystem of tools
+Beyond internal organization, Trustnet also provides:
+
+Modules for community participation
+
+Shared tools across networks
+
+Future possibility of launching community crowdfunding campaigns
+
+Impact visualization and public transparency
+
+
 
 If you want to test your project locally, you can use the following commands:
 
 ```bash
 # Starts the replica, running in the background
 dfx start --background
-
-# Deploys your canisters to the replica and generates your candid interface
-dfx deploy
 ```
+To interact with the ledger locally, you can check the following link: https://internetcomputer.org/docs/tutorials/developer-liftoff/level-4/4.1-icp-ledger
+
+Still, here’s a quick summary: it’s necessary to create two identities.
+
+```bash
+dfx identity new minter --storage-mode plaintext
+dfx identity use minter
+export MINTER_ACCOUNT_ID=$(dfx ledger account-id)
+```
+Any transfer made from the minting account will make a Mint transaction, while transfers to the minting account will make a Burn transaction.
+
+Then switch to another identity that will receive the minted tokens, use:
+
+```bash
+export DEFAULT_ACCOUNT_ID=$(dfx ledger account-id)
+```
+Now you just need to run:
+
+```bash
+dfx deploy --specified-id ryjl3-tyaaa-aaaaa-aaaba-cai icp_ledger_canister --argument "(variant { Init = record { minting_account = "$MINTER_ACCOUNT_ID"; initial_values = vec { record { "$DEFAULT_ACCOUNT_ID"; record { e8s = 10_000_000_000 : nat64; }; }; }; send_whitelist = vec {}; transfer_fee = opt record { e8s = 10_000 : nat64; }; token_symbol = opt "LICP"; token_name = opt "Local ICP"; }})"
+```
+And you can transfer to the accounts you created in the app. To see the balance in the profile, there's still a lot to do, but we hope to keep working to bring Trustnet to life.
+
 
 Once the job completes, your application will be available at `http://localhost:4943?canisterId={asset_canister_id}`.
 
