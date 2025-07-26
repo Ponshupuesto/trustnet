@@ -1,5 +1,4 @@
-// pages/Profile.tsx
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Edit2, Save, Check } from 'lucide-react';
 import ProfileCard from '../components/profile/ProfileCard';
 import AccountCard from '../components/profile/AccountCard';
@@ -8,14 +7,8 @@ import SocialNetworksCard from '../components/profile/SocialNetworksCard';
 import PrivacySettingsCard from '../components/profile/PrivacySettingsCard';
 import { useAuth } from '../hooks/useAuth';
 import { useWallet } from '../hooks/useWallet';
-//import {icp_ledger_canister} from '../../../declarations/icp_ledger_canister/'
+import { useActor } from '../components/ic/Actors';
 
-// Importa estos componentes desde sus archivos correspondientes:
-// import ProfileCard from '../components/profile/ProfileCard';
-// import AccountCard from '../components/profile/AccountCard';
-// import ContactInfoCard from '../components/profile/ContactInfoCard';
-// import SocialNetworksCard from '../components/profile/SocialNetworksCard';
-// import PrivacySettingsCard from '../components/profile/PrivacySettingsCard';
 
 interface ProfileData {
   displayName: string;
@@ -43,53 +36,53 @@ const Profile: React.FC = () => {
   const [isSaving, setIsSaving] = useState(false);
   const [showSaved, setShowSaved] = useState(false);
   const [tempPhoto, setTempPhoto] = useState<string | undefined>(undefined);
-  
+  const { actor } = useActor();
+
+
   const [profileData, setProfileData] = useState<ProfileData>({
-    displayName: 'María González',
-    bio: 'Emprendedora social apasionada por la tecnología descentralizada y la construcción de comunidades.',
-    location: 'Ciudad de México, México',
-    email: 'maria@example.com',
-    phone: '+52 55 1234 5678',
-    website: 'https://mariagonzalez.com',
-    twitter: '@mariagmx',
-    linkedin: 'linkedin.com/in/mariagonzalez',
-    github: 'mariagmx',
-    showEmail: true,
+    displayName: '',
+    bio: '',
+    location: '',
+    email: '',
+    phone: '',
+    website: '',
+    twitter: '',
+    linkedin: '',
+    github: '',
+    showEmail: false,
     showPhone: false,
     showLocation: true,
     showWebsite: true,
     showTwitter: true,
     showLinkedin: true,
-    showGithub: false,
+    showGithub: true,
     allowMessages: true,
     photoUrl: undefined
   });
-  
+
   const [editingData, setEditingData] = useState<ProfileData>(profileData);
-  
-  // Principal ID 
-  const {identity} = useAuth(); 
+
+  const { identity } = useAuth();
   const principalId = identity?.getPrincipal().toString() || "Error";
   const principal = identity?.getPrincipal();
 
-   const {
+  const {
     balance,
     isLoadingBalance,
     refreshBalance,
-    accountIdentifierHex,
-    estimateFee
+    accountIdentifierHex
   } = useWallet({
     principal,
-    autoRefreshInterval: 30000 // Actualizar cada 30 segundos
+    autoRefreshInterval: 30000
   });
-  
+
   const handleUpdateField = (field: string, value: any) => {
     setEditingData(prev => ({
       ...prev,
       [field]: value
     }));
   };
-  
+
   const handlePhotoChange = (file: File) => {
     const reader = new FileReader();
     reader.onloadend = () => {
@@ -97,45 +90,99 @@ const Profile: React.FC = () => {
     };
     reader.readAsDataURL(file);
   };
-  
+
   const handleSave = async () => {
     setIsSaving(true);
     await new Promise(resolve => setTimeout(resolve, 1500));
-    
+
     setProfileData({
       ...editingData,
       photoUrl: tempPhoto || editingData.photoUrl
     });
-    
+
     setIsSaving(false);
     setIsEditing(false);
     setShowSaved(true);
     setTimeout(() => setShowSaved(false), 3000);
   };
-  
+
   const handleCancel = () => {
     setIsEditing(false);
     setEditingData(profileData);
     setTempPhoto(profileData.photoUrl);
   };
-  
+
   const handleEdit = () => {
     setIsEditing(true);
     setEditingData(profileData);
   };
-  
+
+  useEffect(() => {
+    const fetchProfile = async () => {
+      if (!identity) return;
+      if (!actor) return;
+      try {
+        const result = await actor.getProfile();
+        if ("ok" in result) {
+          const user = result.ok;
+
+          let photoBase64: string | undefined = undefined;
+
+          if (
+            Array.isArray(user.photo) &&
+            user.photo.length > 0 &&
+            user.photo[0] instanceof Uint8Array
+          ) {
+            const blob = user.photo[0];
+            const binary = String.fromCharCode(...Array.from(blob));
+            photoBase64 = `data:image/*;base64,${btoa(binary)}`;
+          }
+
+          const mappedProfile: ProfileData = {
+            displayName: user.displayName,
+            bio: user.bio,
+            location: user.location,
+            email: user.email,
+            phone: user.phone,
+            website: user.website,
+            twitter: user.twitter,
+            linkedin: user.linkedin,
+            github: user.github,
+            showEmail: user.showEmail,
+            showPhone: user.showPhone,
+            showLocation: user.showLocation,
+            showWebsite: user.showWebsite,
+            showTwitter: user.showTwitter,
+            showLinkedin: user.showLinkedin,
+            showGithub: user.showGithub,
+            allowMessages: user.allowMessages,
+            photoUrl: photoBase64
+          };
+
+          setProfileData(mappedProfile);
+          setEditingData(mappedProfile);
+          setTempPhoto(mappedProfile.photoUrl);
+        } else {
+          console.error("Error al obtener perfil:", result.err);
+        }
+      } catch (e) {
+        console.error("Error al cargar perfil:", e);
+      }
+    };
+
+    fetchProfile();
+  }, [identity]);
+
   return (
     <div className="min-h-screen bg-gray-50">
       <div className="max-w-6xl mx-auto p-6 space-y-6">
-        {/* Success Message */}
         {showSaved && (
           <div className="flex items-center gap-2 p-4 bg-green-50 border border-green-200 rounded-lg text-green-800">
             <Check className="w-5 h-5" />
             <span>¡Cambios guardados exitosamente!</span>
           </div>
         )}
-        
-        {/* Header with Actions */}
+
         <div className="flex justify-between items-center">
           <h1 className="text-3xl font-bold text-gray-900">Mi Perfil</h1>
           <div>
@@ -176,8 +223,7 @@ const Profile: React.FC = () => {
             )}
           </div>
         </div>
-        
-        {/* Profile Card */}
+
         <ProfileCard
           profileData={profileData}
           editingData={editingData}
@@ -186,19 +232,16 @@ const Profile: React.FC = () => {
           onPhotoChange={handlePhotoChange}
           tempPhoto={tempPhoto}
         />
-        
-        {/* Account Card */}
-        <AccountCard 
-        principal={principal!}
-        accountId={accountIdentifierHex}
-        balance={balance}
-        isLoadingBalance={isLoadingBalance}
-        onRefreshBalance={refreshBalance}
-      />
-        
-        {/* Contact & Social Grid */}
+
+        <AccountCard
+          principal={principal!}
+          accountId={accountIdentifierHex}
+          balance={balance}
+          isLoadingBalance={isLoadingBalance}
+          onRefreshBalance={refreshBalance}
+        />
+
         <div className="grid lg:grid-cols-2 gap-6">
-          {/* Contact Information */}
           <ContactInfoCard
             contactData={{
               email: isEditing ? editingData.email : profileData.email,
@@ -211,8 +254,7 @@ const Profile: React.FC = () => {
             isEditing={isEditing}
             onUpdateField={handleUpdateField}
           />
-          
-          {/* Social Networks */}
+
           <SocialNetworksCard
             socialData={{
               twitter: isEditing ? editingData.twitter : profileData.twitter,
@@ -226,8 +268,7 @@ const Profile: React.FC = () => {
             onUpdateField={handleUpdateField}
           />
         </div>
-        
-        {/* Privacy Settings - Solo visible en modo edición */}
+
         {isEditing && (
           <PrivacySettingsCard
             privacyData={{
@@ -242,4 +283,4 @@ const Profile: React.FC = () => {
   );
 };
 
-export default Profile; 
+export default Profile;

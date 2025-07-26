@@ -42,13 +42,6 @@ const PrivateLayout: React.FC = () => {
                 <User className="w-4 h-4" />
                 <span>Perfil</span>
               </Link>
-              <Link 
-                to="/editprofile" 
-                className="flex items-center space-x-1 text-gray-700 hover:text-purple-600 transition-colors"
-              >
-                <User className="w-4 h-4" />
-                <span>Editar Perfil</span>
-              </Link>
             </div>
             
             {/* User Info & Logout */}
